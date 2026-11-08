@@ -1,0 +1,30 @@
+appId: dev.pocket.mock
+name: Native session create, stream and reopen
+---
+# Connect with the owner-only credential before running. Secrets never enter Maestro logs.
+- tapOn: Open sessions
+- tapOn: New session
+- tapOn: Session title
+- inputText: Android acceptance
+- hideKeyboard
+- tapOn: Create session
+- extendedWaitUntil:
+    visible: 'live · Ready'
+    timeout: 15000
+- tapOn: Message
+- inputText: 'Verify native streaming through SQLite and WebSocket. This deliberately longer synthetic prompt leaves enough time to observe the running state on a real emulator before completion. The gateway persists each text chunk before delivery and the native client writes each event and cursor transactionally. The final response must preserve all text without duplicates. This test uses the production Mock adapter, authenticated HTTP commands, real WebSocket delivery, native rendering, and Expo SQLite. No real workspace, provider, private integration, or later phase is involved.'
+- hideKeyboard
+- tapOn:
+    text: Send
+    waitToSettleTimeoutMs: 0
+- assertVisible: 'live · running'
+# Allow bounded replay/rendering under native debug instrumentation. The
+# previous 15-second miss is recorded; this is not a latency benchmark.
+- extendedWaitUntil:
+    visible: 'live · completed'
+    timeout: 60000
+- takeScreenshot: completed
+- tapOn: Back to sessions
+- assertVisible: Android acceptance
+- tapOn: Android acceptance
+- assertVisible: 'live · completed'

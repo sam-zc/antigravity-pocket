@@ -1,0 +1,10 @@
+node_modules
+dist
+.expo
+.artifacts
+.local-only
+pnpm-lock.yaml
+**/ios/
+**/android/
+**/.state/
+**/expo-env.d.ts

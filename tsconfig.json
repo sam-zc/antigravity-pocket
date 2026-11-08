@@ -1,0 +1,17 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "packages/protocol"
+    },
+    {
+      "path": "packages/adapter-sdk"
+    },
+    {
+      "path": "packages/design-tokens"
+    },
+    {
+      "path": "services/gateway"
+    }
+  ]
+}

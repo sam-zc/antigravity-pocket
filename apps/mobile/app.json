@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "Pocket Mock",
+    "slug": "antigravity-pocket",
+    "scheme": "pocket",
+    "version": "0.1.0",
+    "orientation": "default",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "dev.pocket.mock",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true
+        }
+      },
+      "buildNumber": "2"
+    },
+    "android": {
+      "package": "dev.pocket.mock",
+      "blockedPermissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
+      "versionCode": 2
+    },
+    "plugins": [
+      "expo-router",
+      "expo-sqlite",
+      "./plugins/with-loopback-network.cjs",
+      "expo-secure-store",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Pocket to scan a private desktop pairing invitation.",
+          "recordAudioAndroid": false
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

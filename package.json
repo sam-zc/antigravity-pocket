@@ -1,0 +1,35 @@
+{
+  "name": "antigravity-pocket",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=24.15.0 <25"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "pnpm build && pnpm --filter @pocket/mobile typecheck",
+    "lint": "eslint . && node scripts/check-boundaries.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "pnpm build && vitest run --configLoader native",
+    "test:mobile": "pnpm --filter @pocket/mobile test",
+    "gateway": "pnpm --filter @pocket/gateway start",
+    "mobile": "pnpm --filter @pocket/mobile start",
+    "bundle": "pnpm --filter @pocket/mobile bundle",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm test:mobile && pnpm bundle",
+    "admin": "pnpm --filter @pocket/gateway admin"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@pocket/protocol": "workspace:*",
+    "@types/node": "^24.0.0",
+    "eslint": "^9.39.0",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "4.1.12"
+  },
+  "type": "module"
+}
